@@ -1,0 +1,237 @@
+{
+    "s0": {
+        "external_services": [
+            {
+                "seq_len": 100,
+                "services": [
+                    "s1"
+                ],
+                "probabilities": {
+                    "s1": 1.0
+                }
+            },
+            {
+                "seq_len": 100,
+                "services": [
+                    "s2"
+                ],
+                "probabilities": {
+                    "s2": 1.0
+                }
+            },
+            {
+                "seq_len": 100,
+                "services": [
+                    "s3"
+                ],
+                "probabilities": {
+                    "s3": 1.0
+                }
+            },
+            {
+                "seq_len": 100,
+                "services": [
+                    "s4"
+                ],
+                "probabilities": {
+                    "s4": 1.0
+                }
+            },
+            {
+                "seq_len": 100,
+                "services": [
+                    "s5"
+                ],
+                "probabilities": {
+                    "s5": 1.0
+                }
+            },
+            {
+                "seq_len": 100,
+                "services": [
+                    "s6"
+                ],
+                "probabilities": {
+                    "s6": 1.0
+                }
+            },
+            {
+                "seq_len": 100,
+                "services": [
+                    "s7"
+                ],
+                "probabilities": {
+                    "s7": 1.0
+                }
+            },
+            {
+                "seq_len": 100,
+                "services": [
+                    "s8"
+                ],
+                "probabilities": {
+                    "s8": 1.0
+                }
+            },
+            {
+                "seq_len": 100,
+                "services": [
+                    "s9"
+                ],
+                "probabilities": {
+                    "s9": 1.0
+                }
+            },
+            {
+                "seq_len": 100,
+                "services": [
+                    "s10"
+                ],
+                "probabilities": {
+                    "s10": 1.0
+                }
+            },
+            {
+                "seq_len": 100,
+                "services": [
+                    "s11"
+                ],
+                "probabilities": {
+                    "s11": 1.0
+                }
+            },
+            {
+                "seq_len": 100,
+                "services": [
+                    "s12"
+                ],
+                "probabilities": {
+                    "s12": 1.0
+                }
+            }
+        ]
+    },
+    "s1": {
+        "external_services": [
+            {
+                "seq_len": 1,
+                "services": [
+                    "sdb1"
+                ]
+            }
+        ]
+    },
+    "s2": {
+        "external_services": [
+            {
+                "seq_len": 1,
+                "services": [
+                    "sdb1"
+                ]
+            }
+        ]
+    },
+    "s3": {
+        "external_services": [
+            {
+                "seq_len": 1,
+                "services": [
+                    "sdb1"
+                ]
+            }
+        ]
+    },
+    "s4": {
+        "external_services": [
+            {
+                "seq_len": 1,
+                "services": [
+                    "sdb1"
+                ]
+            }
+        ]
+    },
+    "s5": {
+        "external_services": [
+            {
+                "seq_len": 1,
+                "services": [
+                    "sdb1"
+                ]
+            }
+        ]
+    },
+    "s6": {
+        "external_services": [
+            {
+                "seq_len": 1,
+                "services": [
+                    "sdb1"
+                ]
+            }
+        ]
+    },
+    "s7": {
+        "external_services": [
+            {
+                "seq_len": 1,
+                "services": [
+                    "sdb1"
+                ]
+            }
+        ]
+    },
+    "s8": {
+        "external_services": [
+            {
+                "seq_len": 1,
+                "services": [
+                    "sdb1"
+                ]
+            }
+        ]
+    },
+    "s9": {
+        "external_services": [
+            {
+                "seq_len": 1,
+                "services": [
+                    "sdb1"
+                ]
+            }
+        ]
+    },
+    "s10": {
+        "external_services": [
+            {
+                "seq_len": 1,
+                "services": [
+                    "sdb1"
+                ]
+            }
+        ]
+    },
+    "s11": {
+        "external_services": [
+            {
+                "seq_len": 1,
+                "services": [
+                    "sdb1"
+                ]
+            }
+        ]
+    },
+    "s12": {
+        "external_services": [
+            {
+                "seq_len": 1,
+                "services": [
+                    "sdb1"
+                ]
+            }
+        ]
+    },
+    "sdb1": {
+        "external_services": []
+    }
+}

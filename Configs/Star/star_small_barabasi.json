@@ -1,0 +1,21 @@
+{
+    "ServiceGraphParameters": {
+        "vertices": 5,
+        "external_service_groups": 1,
+        "power": 2.0,
+        "seq_len": 100,
+        "zero_appeal": 0.01,
+        "service_probability": {
+            "model": "const",
+            "params": {
+                "value": 1
+            }
+        },
+        "dbs": {
+            "nodb": 0.2,
+            "sdb1": 0.8
+        }
+    },
+    "OutputPath": "SimulationWorkspace/Star",
+    "OutputFile": "servicegraph_star_small_barabasi.json"
+}
