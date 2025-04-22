@@ -9,7 +9,11 @@
         "probabilities": {
           "s1": 1.0
         }
-      },
+      }
+    ]
+  },
+  "s1": {
+    "external_services": [
       {
         "seq_len": 100,
         "services": [
@@ -18,7 +22,11 @@
         "probabilities": {
           "s2": 1.0
         }
-      },
+      }
+    ]
+  },
+  "s2": {
+    "external_services": [
       {
         "seq_len": 100,
         "services": [
@@ -27,7 +35,11 @@
         "probabilities": {
           "s3": 1.0
         }
-      },
+      }
+    ]
+  },
+  "s3": {
+    "external_services": [
       {
         "seq_len": 100,
         "services": [
@@ -39,47 +51,17 @@
       }
     ]
   },
-  "s1": {
-    "external_services": [
-      {
-        "seq_len": 1,
-        "services": [
-          "sdb1"
-        ]
-      }
-    ]
-  },
-  "s2": {
-    "external_services": [
-      {
-        "seq_len": 1,
-        "services": [
-          "sdb1"
-        ]
-      }
-    ]
-  },
-  "s3": {
-    "external_services": [
-      {
-        "seq_len": 1,
-        "services": [
-          "sdb1"
-        ]
-      }
-    ]
-  },
   "s4": {
     "external_services": [
       {
-        "seq_len": 1,
+        "seq_len": 100,
         "services": [
-          "sdb1"
-        ]
+          "s0"
+        ],
+        "probabilities": {
+          "s0": 1.0
+        }
       }
     ]
-  },
-  "sdb1": {
-    "external_services": []
   }
 }

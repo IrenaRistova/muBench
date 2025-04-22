@@ -1,0 +1,154 @@
+{
+  "s0": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s1",
+          "s2"
+        ],
+        "probabilities": {
+          "s1": 0.5,
+          "s2": 0.5
+        }
+      }
+    ]
+  },
+  "s1": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s3",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "probabilities": {
+          "s3": 0.25,
+          "s4": 0.25,
+          "s5": 0.25,
+          "s6": 0.25
+        }
+      }
+    ]
+  },
+  "s2": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s3",
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "probabilities": {
+          "s3": 0.25,
+          "s4": 0.25,
+          "s5": 0.25,
+          "s6": 0.25
+        }
+      }
+    ]
+  },
+  "s3": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s7",
+          "s8",
+          "s9",
+          "s10",
+          "s11"
+        ],
+        "probabilities": {
+          "s7": 0.2,
+          "s8": 0.2,
+          "s9": 0.2,
+          "s10": 0.2,
+          "s11": 0.2
+        }
+      }
+    ]
+  },
+  "s4": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s7",
+          "s8",
+          "s9",
+          "s10",
+          "s11"
+        ],
+        "probabilities": {
+          "s7": 0.2,
+          "s8": 0.2,
+          "s9": 0.2,
+          "s10": 0.2,
+          "s11": 0.2
+        }
+      }
+    ]
+  },
+  "s5": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s7",
+          "s8",
+          "s9",
+          "s10",
+          "s11"
+        ],
+        "probabilities": {
+          "s7": 0.2,
+          "s8": 0.2,
+          "s9": 0.2,
+          "s10": 0.2,
+          "s11": 0.2
+        }
+      }
+    ]
+  },
+  "s6": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s7",
+          "s8",
+          "s9",
+          "s10",
+          "s11"
+        ],
+        "probabilities": {
+          "s7": 0.2,
+          "s8": 0.2,
+          "s9": 0.2,
+          "s10": 0.2,
+          "s11": 0.2
+        }
+      }
+    ]
+  },
+  "s7": {
+    "external_services": []
+  },
+  "s8": {
+    "external_services": []
+  },
+  "s9": {
+    "external_services": []
+  },
+  "s10": {
+    "external_services": []
+  },
+  "s11": {
+    "external_services": []
+  }
+}

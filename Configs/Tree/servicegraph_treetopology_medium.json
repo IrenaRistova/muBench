@@ -1,0 +1,92 @@
+{
+  "s0": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s1",
+          "s2",
+          "s3"
+        ],
+        "probabilities": {
+          "s1": 0.3333333333333333,
+          "s2": 0.3333333333333333,
+          "s3": 0.3333333333333333
+        }
+      }
+    ]
+  },
+  "s1": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s4",
+          "s5",
+          "s6"
+        ],
+        "probabilities": {
+          "s4": 0.3333333333333333,
+          "s5": 0.3333333333333333,
+          "s6": 0.3333333333333333
+        }
+      }
+    ]
+  },
+  "s2": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s7",
+          "s8",
+          "s9"
+        ],
+        "probabilities": {
+          "s7": 0.3333333333333333,
+          "s8": 0.3333333333333333,
+          "s9": 0.3333333333333333
+        }
+      }
+    ]
+  },
+  "s3": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s10",
+          "s11"
+        ],
+        "probabilities": {
+          "s10": 0.5,
+          "s11": 0.5
+        }
+      }
+    ]
+  },
+  "s4": {
+    "external_services": []
+  },
+  "s5": {
+    "external_services": []
+  },
+  "s6": {
+    "external_services": []
+  },
+  "s7": {
+    "external_services": []
+  },
+  "s8": {
+    "external_services": []
+  },
+  "s9": {
+    "external_services": []
+  },
+  "s10": {
+    "external_services": []
+  },
+  "s11": {
+    "external_services": []
+  }
+}
