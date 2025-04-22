@@ -1,6 +1,25 @@
 {
   "s0": {
-    "external_services": []
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s8"
+        ],
+        "probabilities": {
+          "s8": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s5"
+        ],
+        "probabilities": {
+          "s5": 0.5
+        }
+      }
+    ]
   },
   "s1": {
     "external_services": [
@@ -10,59 +29,33 @@
           "s2"
         ],
         "probabilities": {
-          "s2": 1.0
+          "s2": 0.3333333333333333
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s9"
+        ],
+        "probabilities": {
+          "s9": 0.3333333333333333
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s0"
+        ],
+        "probabilities": {
+          "s0": 0.3333333333333333
         }
       }
     ]
   },
   "s2": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s3"
-        ],
-        "probabilities": {
-          "s3": 0.5
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s11"
-        ],
-        "probabilities": {
-          "s11": 0.5
-        }
-      }
-    ]
-  },
-  "s3": {
     "external_services": []
   },
-  "s4": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s5"
-        ],
-        "probabilities": {
-          "s5": 0.5
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s3"
-        ],
-        "probabilities": {
-          "s3": 0.5
-        }
-      }
-    ]
-  },
-  "s5": {
+  "s3": {
     "external_services": [
       {
         "seq_len": 100,
@@ -70,140 +63,7 @@
           "s1"
         ],
         "probabilities": {
-          "s1": 0.3333333333333333
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s6"
-        ],
-        "probabilities": {
-          "s6": 0.3333333333333333
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s4"
-        ],
-        "probabilities": {
-          "s4": 0.3333333333333333
-        }
-      }
-    ]
-  },
-  "s6": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s7"
-        ],
-        "probabilities": {
-          "s7": 0.3333333333333333
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s10"
-        ],
-        "probabilities": {
-          "s10": 0.3333333333333333
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s4"
-        ],
-        "probabilities": {
-          "s4": 0.3333333333333333
-        }
-      }
-    ]
-  },
-  "s7": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s8"
-        ],
-        "probabilities": {
-          "s8": 0.25
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s8"
-        ],
-        "probabilities": {
-          "s8": 0.25
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s3"
-        ],
-        "probabilities": {
-          "s3": 0.25
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s9"
-        ],
-        "probabilities": {
-          "s9": 0.25
-        }
-      }
-    ]
-  },
-  "s8": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s9"
-        ],
-        "probabilities": {
-          "s9": 0.3333333333333333
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s9"
-        ],
-        "probabilities": {
-          "s9": 0.3333333333333333
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s4"
-        ],
-        "probabilities": {
-          "s4": 0.3333333333333333
-        }
-      }
-    ]
-  },
-  "s9": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s5"
-        ],
-        "probabilities": {
-          "s5": 0.2
+          "s1": 0.2
         }
       },
       {
@@ -218,10 +78,10 @@
       {
         "seq_len": 100,
         "services": [
-          "s5"
+          "s11"
         ],
         "probabilities": {
-          "s5": 0.2
+          "s11": 0.2
         }
       },
       {
@@ -236,26 +96,41 @@
       {
         "seq_len": 100,
         "services": [
-          "s10"
+          "s2"
         ],
         "probabilities": {
-          "s10": 0.2
+          "s2": 0.2
         }
       }
     ]
   },
-  "s10": {
-    "external_services": []
-  },
-  "s11": {
+  "s4": {
     "external_services": [
       {
         "seq_len": 100,
         "services": [
-          "s10"
+          "s5"
         ],
         "probabilities": {
-          "s10": 0.5
+          "s5": 0.16666666666666666
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s6"
+        ],
+        "probabilities": {
+          "s6": 0.16666666666666666
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s8"
+        ],
+        "probabilities": {
+          "s8": 0.16666666666666666
         }
       },
       {
@@ -264,7 +139,179 @@
           "s10"
         ],
         "probabilities": {
-          "s10": 0.5
+          "s10": 0.16666666666666666
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s9"
+        ],
+        "probabilities": {
+          "s9": 0.16666666666666666
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s2"
+        ],
+        "probabilities": {
+          "s2": 0.16666666666666666
+        }
+      }
+    ]
+  },
+  "s5": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s6"
+        ],
+        "probabilities": {
+          "s6": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s8"
+        ],
+        "probabilities": {
+          "s8": 0.5
+        }
+      }
+    ]
+  },
+  "s6": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s7"
+        ],
+        "probabilities": {
+          "s7": 1.0
+        }
+      }
+    ]
+  },
+  "s7": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s0"
+        ],
+        "probabilities": {
+          "s0": 1.0
+        }
+      }
+    ]
+  },
+  "s8": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s9"
+        ],
+        "probabilities": {
+          "s9": 1.0
+        }
+      }
+    ]
+  },
+  "s9": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s10"
+        ],
+        "probabilities": {
+          "s10": 0.3333333333333333
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s1"
+        ],
+        "probabilities": {
+          "s1": 0.3333333333333333
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s8"
+        ],
+        "probabilities": {
+          "s8": 0.3333333333333333
+        }
+      }
+    ]
+  },
+  "s10": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s11"
+        ],
+        "probabilities": {
+          "s11": 0.25
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s1"
+        ],
+        "probabilities": {
+          "s1": 0.25
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s5"
+        ],
+        "probabilities": {
+          "s5": 0.25
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s0"
+        ],
+        "probabilities": {
+          "s0": 0.25
+        }
+      }
+    ]
+  },
+  "s11": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s8"
+        ],
+        "probabilities": {
+          "s8": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s1"
+        ],
+        "probabilities": {
+          "s1": 0.5
         }
       }
     ]
