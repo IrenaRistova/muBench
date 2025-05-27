@@ -8,9 +8,9 @@ class TopologyGenerator:
         self.size = size
         self.service_graph = {}
         self.sizes = {
-            'small': 5,
-            'medium': 12,
-            'large': 22
+            'small': 60,
+            'medium': 700,
+            'large': 4000
         }
         self.num_services = self.sizes[size]
     
@@ -27,7 +27,9 @@ class TopologyGenerator:
         print(f"✅ Generated {filename}")
         
     def visualize(self, output_dir: str):
-        """Create and save a visualization of the service graph."""
+        if self.size == 'large':
+            print("Skipping graph visualization for large topology.")
+            return
         g = Graph(directed=True)
         node_names = list(self.service_graph.keys())
         g.add_vertices(node_names)

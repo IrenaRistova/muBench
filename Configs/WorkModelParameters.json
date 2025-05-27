@@ -132,7 +132,7 @@
       },
       "ServiceGraphFilePath": {
          "type": "metadata",
-         "value": "SimulationWorkspace/servicegraph_star_small_manual.json"
+         "value": "Configs/Mesh/servicegraph_meshtopology_large.json"
       },
       "OutputPath": {
          "type": "metadata",
