@@ -1,0 +1,23 @@
+{
+   "K8sParameters": {
+      "prefix_yaml_file": "MicroServiceDeployment",
+      "namespace": "default",
+      "image": "msvcbench/microservice_v5-screen:latest",
+      "cluster_domain": "cluster",
+      "path": "/api/v1",
+      "dns-resolver": "kube-dns.kube-system.svc.cluster.local",
+      "scheduler-name": "default-scheduler",
+      "sleep": 2,
+      "nginx-gw": true,
+      "nginx-svc-type": "NodePort",
+      "service-type": "ClusterIP",
+      "no-apply": true,
+      "cpu-requests": "14m",
+      "memory-requests": "128Mi",
+      "cpu-limits": "50m",
+      "memory-limits": "256Mi"
+   },
+   "InternalServiceFilePath": "CustomFunctions",
+   "OutputPath": "SimulationWorkspace",
+   "WorkModelPath": "SimulationWorkspace/workmodel.json"
+}
