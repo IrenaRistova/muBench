@@ -11,11 +11,7 @@
       "nginx-gw": true,
       "nginx-svc-type": "NodePort",
       "service-type": "ClusterIP",
-      "no-apply": true,
-      "cpu-requests": "14m",
-      "memory-requests": "128Mi",
-      "cpu-limits": "50m",
-      "memory-limits": "256Mi"
+      "no-apply": false
    },
    "InternalServiceFilePath": "CustomFunctions",
    "OutputPath": "SimulationWorkspace",

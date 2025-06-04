@@ -38,9 +38,9 @@ spec:
             - name: podinfo
               mountPath: /etc/podinfo
             - name: microservice-workmodel
-              mountPath: /app/MSConfig
+              mountPath: /app/MSConfig/workmodel.json
             - name: microservice-internal-services
-              mountPath: /app/MSConfig/InternalServiceFunctions
+              mountPath: /app/MSConfig/CustomFunctions
           env:
             - name: APP
               value: {{SERVICE_NAME}}
@@ -73,8 +73,10 @@ spec:
                 fieldRef:
                   fieldPath: metadata.annotations
         - name: microservice-workmodel
-          configMap:
-            name: workmodel
+          hostPath:
+            path: /root/muBench/SimulationWorkspace/workmodel.json
+            type: File
         - name: microservice-internal-services
-          configMap:
-            name: internal-services
+          hostPath:
+            path: /root/muBench/SimulationWorkspace/CustomFunctions
+            type: Directory

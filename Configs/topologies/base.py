@@ -10,7 +10,7 @@ class TopologyGenerator:
         self.sizes = {
             'small': 60,
             'medium': 300,
-            'large': 700
+            'large': 10,
         }
         self.num_services = self.sizes[size]
     

@@ -4,10 +4,19 @@
       {
         "seq_len": 100,
         "services": [
-          "s1"
+          "s51"
         ],
         "probabilities": {
-          "s1": 1.0
+          "s51": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s24"
+        ],
+        "probabilities": {
+          "s24": 0.5
         }
       }
     ]
@@ -17,44 +26,16 @@
       {
         "seq_len": 100,
         "services": [
-          "s2"
+          "s34"
         ],
         "probabilities": {
-          "s2": 0.5
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s6"
-        ],
-        "probabilities": {
-          "s6": 0.5
+          "s34": 1.0
         }
       }
     ]
   },
   "s2": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s59"
-        ],
-        "probabilities": {
-          "s59": 0.5
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s31"
-        ],
-        "probabilities": {
-          "s31": 0.5
-        }
-      }
-    ]
+    "external_services": []
   },
   "s3": {
     "external_services": [
@@ -70,521 +51,9 @@
     ]
   },
   "s4": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s5"
-        ],
-        "probabilities": {
-          "s5": 1.0
-        }
-      }
-    ]
+    "external_services": []
   },
   "s5": {
-    "external_services": []
-  },
-  "s6": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s7"
-        ],
-        "probabilities": {
-          "s7": 1.0
-        }
-      }
-    ]
-  },
-  "s7": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s4"
-        ],
-        "probabilities": {
-          "s4": 0.3333333333333333
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s38"
-        ],
-        "probabilities": {
-          "s38": 0.3333333333333333
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s6"
-        ],
-        "probabilities": {
-          "s6": 0.3333333333333333
-        }
-      }
-    ]
-  },
-  "s8": {
-    "external_services": []
-  },
-  "s9": {
-    "external_services": []
-  },
-  "s10": {
-    "external_services": []
-  },
-  "s11": {
-    "external_services": []
-  },
-  "s12": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s34"
-        ],
-        "probabilities": {
-          "s34": 0.5
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s55"
-        ],
-        "probabilities": {
-          "s55": 0.5
-        }
-      }
-    ]
-  },
-  "s13": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s32"
-        ],
-        "probabilities": {
-          "s32": 1.0
-        }
-      }
-    ]
-  },
-  "s14": {
-    "external_services": []
-  },
-  "s15": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s56"
-        ],
-        "probabilities": {
-          "s56": 1.0
-        }
-      }
-    ]
-  },
-  "s16": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s53"
-        ],
-        "probabilities": {
-          "s53": 1.0
-        }
-      }
-    ]
-  },
-  "s17": {
-    "external_services": []
-  },
-  "s18": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s14"
-        ],
-        "probabilities": {
-          "s14": 0.5
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s49"
-        ],
-        "probabilities": {
-          "s49": 0.5
-        }
-      }
-    ]
-  },
-  "s19": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s39"
-        ],
-        "probabilities": {
-          "s39": 1.0
-        }
-      }
-    ]
-  },
-  "s20": {
-    "external_services": []
-  },
-  "s21": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s20"
-        ],
-        "probabilities": {
-          "s20": 1.0
-        }
-      }
-    ]
-  },
-  "s22": {
-    "external_services": []
-  },
-  "s23": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s30"
-        ],
-        "probabilities": {
-          "s30": 1.0
-        }
-      }
-    ]
-  },
-  "s24": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s21"
-        ],
-        "probabilities": {
-          "s21": 1.0
-        }
-      }
-    ]
-  },
-  "s25": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s59"
-        ],
-        "probabilities": {
-          "s59": 1.0
-        }
-      }
-    ]
-  },
-  "s26": {
-    "external_services": []
-  },
-  "s27": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s31"
-        ],
-        "probabilities": {
-          "s31": 0.25
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s17"
-        ],
-        "probabilities": {
-          "s17": 0.25
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s42"
-        ],
-        "probabilities": {
-          "s42": 0.25
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s2"
-        ],
-        "probabilities": {
-          "s2": 0.25
-        }
-      }
-    ]
-  },
-  "s28": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s27"
-        ],
-        "probabilities": {
-          "s27": 1.0
-        }
-      }
-    ]
-  },
-  "s29": {
-    "external_services": []
-  },
-  "s30": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s53"
-        ],
-        "probabilities": {
-          "s53": 0.5
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s26"
-        ],
-        "probabilities": {
-          "s26": 0.5
-        }
-      }
-    ]
-  },
-  "s31": {
-    "external_services": []
-  },
-  "s32": {
-    "external_services": []
-  },
-  "s33": {
-    "external_services": []
-  },
-  "s34": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s50"
-        ],
-        "probabilities": {
-          "s50": 1.0
-        }
-      }
-    ]
-  },
-  "s35": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s38"
-        ],
-        "probabilities": {
-          "s38": 1.0
-        }
-      }
-    ]
-  },
-  "s36": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s56"
-        ],
-        "probabilities": {
-          "s56": 1.0
-        }
-      }
-    ]
-  },
-  "s37": {
-    "external_services": []
-  },
-  "s38": {
-    "external_services": []
-  },
-  "s39": {
-    "external_services": []
-  },
-  "s40": {
-    "external_services": []
-  },
-  "s41": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s14"
-        ],
-        "probabilities": {
-          "s14": 0.5
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s12"
-        ],
-        "probabilities": {
-          "s12": 0.5
-        }
-      }
-    ]
-  },
-  "s42": {
-    "external_services": []
-  },
-  "s43": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s30"
-        ],
-        "probabilities": {
-          "s30": 1.0
-        }
-      }
-    ]
-  },
-  "s44": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s17"
-        ],
-        "probabilities": {
-          "s17": 0.25
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s6"
-        ],
-        "probabilities": {
-          "s6": 0.25
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s20"
-        ],
-        "probabilities": {
-          "s20": 0.25
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s12"
-        ],
-        "probabilities": {
-          "s12": 0.25
-        }
-      }
-    ]
-  },
-  "s45": {
-    "external_services": []
-  },
-  "s46": {
-    "external_services": []
-  },
-  "s47": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s27"
-        ],
-        "probabilities": {
-          "s27": 1.0
-        }
-      }
-    ]
-  },
-  "s48": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s8"
-        ],
-        "probabilities": {
-          "s8": 1.0
-        }
-      }
-    ]
-  },
-  "s49": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s27"
-        ],
-        "probabilities": {
-          "s27": 1.0
-        }
-      }
-    ]
-  },
-  "s50": {
-    "external_services": []
-  },
-  "s51": {
-    "external_services": []
-  },
-  "s52": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s5"
-        ],
-        "probabilities": {
-          "s5": 1.0
-        }
-      }
-    ]
-  },
-  "s53": {
     "external_services": [
       {
         "seq_len": 100,
@@ -598,62 +67,18 @@
       {
         "seq_len": 100,
         "services": [
-          "s45"
+          "s3"
         ],
         "probabilities": {
-          "s45": 0.5
+          "s3": 0.5
         }
       }
     ]
   },
-  "s54": {
+  "s6": {
     "external_services": []
   },
-  "s55": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s27"
-        ],
-        "probabilities": {
-          "s27": 1.0
-        }
-      }
-    ]
-  },
-  "s56": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s59"
-        ],
-        "probabilities": {
-          "s59": 0.3333333333333333
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s8"
-        ],
-        "probabilities": {
-          "s8": 0.3333333333333333
-        }
-      },
-      {
-        "seq_len": 100,
-        "services": [
-          "s26"
-        ],
-        "probabilities": {
-          "s26": 0.3333333333333333
-        }
-      }
-    ]
-  },
-  "s57": {
+  "s7": {
     "external_services": [
       {
         "seq_len": 100,
@@ -661,32 +86,372 @@
           "s39"
         ],
         "probabilities": {
-          "s39": 1.0
-        }
-      }
-    ]
-  },
-  "s58": {
-    "external_services": []
-  },
-  "s59": {
-    "external_services": [
-      {
-        "seq_len": 100,
-        "services": [
-          "s0"
-        ],
-        "probabilities": {
-          "s0": 0.25
+          "s39": 0.5
         }
       },
       {
         "seq_len": 100,
         "services": [
-          "s26"
+          "s40"
         ],
         "probabilities": {
-          "s26": 0.25
+          "s40": 0.5
+        }
+      }
+    ]
+  },
+  "s8": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s22"
+        ],
+        "probabilities": {
+          "s22": 1.0
+        }
+      }
+    ]
+  },
+  "s9": {
+    "external_services": []
+  },
+  "s10": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s7"
+        ],
+        "probabilities": {
+          "s7": 1.0
+        }
+      }
+    ]
+  },
+  "s11": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s41"
+        ],
+        "probabilities": {
+          "s41": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s38"
+        ],
+        "probabilities": {
+          "s38": 0.5
+        }
+      }
+    ]
+  },
+  "s12": {
+    "external_services": []
+  },
+  "s13": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s47"
+        ],
+        "probabilities": {
+          "s47": 1.0
+        }
+      }
+    ]
+  },
+  "s14": {
+    "external_services": []
+  },
+  "s15": {
+    "external_services": []
+  },
+  "s16": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s4"
+        ],
+        "probabilities": {
+          "s4": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s3"
+        ],
+        "probabilities": {
+          "s3": 0.5
+        }
+      }
+    ]
+  },
+  "s17": {
+    "external_services": []
+  },
+  "s18": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s52"
+        ],
+        "probabilities": {
+          "s52": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s56"
+        ],
+        "probabilities": {
+          "s56": 0.5
+        }
+      }
+    ]
+  },
+  "s19": {
+    "external_services": []
+  },
+  "s20": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s37"
+        ],
+        "probabilities": {
+          "s37": 0.3333333333333333
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s44"
+        ],
+        "probabilities": {
+          "s44": 0.3333333333333333
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s39"
+        ],
+        "probabilities": {
+          "s39": 0.3333333333333333
+        }
+      }
+    ]
+  },
+  "s21": {
+    "external_services": []
+  },
+  "s22": {
+    "external_services": []
+  },
+  "s23": {
+    "external_services": []
+  },
+  "s24": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s20"
+        ],
+        "probabilities": {
+          "s20": 1.0
+        }
+      }
+    ]
+  },
+  "s25": {
+    "external_services": []
+  },
+  "s26": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s52"
+        ],
+        "probabilities": {
+          "s52": 1.0
+        }
+      }
+    ]
+  },
+  "s27": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s13"
+        ],
+        "probabilities": {
+          "s13": 1.0
+        }
+      }
+    ]
+  },
+  "s28": {
+    "external_services": []
+  },
+  "s29": {
+    "external_services": []
+  },
+  "s30": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s34"
+        ],
+        "probabilities": {
+          "s34": 1.0
+        }
+      }
+    ]
+  },
+  "s31": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s24"
+        ],
+        "probabilities": {
+          "s24": 1.0
+        }
+      }
+    ]
+  },
+  "s32": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s57"
+        ],
+        "probabilities": {
+          "s57": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s38"
+        ],
+        "probabilities": {
+          "s38": 0.5
+        }
+      }
+    ]
+  },
+  "s33": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s4"
+        ],
+        "probabilities": {
+          "s4": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s7"
+        ],
+        "probabilities": {
+          "s7": 0.5
+        }
+      }
+    ]
+  },
+  "s34": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s35"
+        ],
+        "probabilities": {
+          "s35": 0.25
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s7"
+        ],
+        "probabilities": {
+          "s7": 0.25
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s37"
+        ],
+        "probabilities": {
+          "s37": 0.25
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s3"
+        ],
+        "probabilities": {
+          "s3": 0.25
+        }
+      }
+    ]
+  },
+  "s35": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s36"
+        ],
+        "probabilities": {
+          "s36": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s28"
+        ],
+        "probabilities": {
+          "s28": 0.5
+        }
+      }
+    ]
+  },
+  "s36": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s37"
+        ],
+        "probabilities": {
+          "s37": 0.5
         }
       },
       {
@@ -695,7 +460,206 @@
           "s4"
         ],
         "probabilities": {
-          "s4": 0.25
+          "s4": 0.5
+        }
+      }
+    ]
+  },
+  "s37": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s34"
+        ],
+        "probabilities": {
+          "s34": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s47"
+        ],
+        "probabilities": {
+          "s47": 0.5
+        }
+      }
+    ]
+  },
+  "s38": {
+    "external_services": []
+  },
+  "s39": {
+    "external_services": []
+  },
+  "s40": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s9"
+        ],
+        "probabilities": {
+          "s9": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s13"
+        ],
+        "probabilities": {
+          "s13": 0.5
+        }
+      }
+    ]
+  },
+  "s41": {
+    "external_services": []
+  },
+  "s42": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s4"
+        ],
+        "probabilities": {
+          "s4": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s3"
+        ],
+        "probabilities": {
+          "s3": 0.5
+        }
+      }
+    ]
+  },
+  "s43": {
+    "external_services": []
+  },
+  "s44": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s41"
+        ],
+        "probabilities": {
+          "s41": 1.0
+        }
+      }
+    ]
+  },
+  "s45": {
+    "external_services": []
+  },
+  "s46": {
+    "external_services": []
+  },
+  "s47": {
+    "external_services": []
+  },
+  "s48": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s22"
+        ],
+        "probabilities": {
+          "s22": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s18"
+        ],
+        "probabilities": {
+          "s18": 0.5
+        }
+      }
+    ]
+  },
+  "s49": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s7"
+        ],
+        "probabilities": {
+          "s7": 1.0
+        }
+      }
+    ]
+  },
+  "s50": {
+    "external_services": []
+  },
+  "s51": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s20"
+        ],
+        "probabilities": {
+          "s20": 1.0
+        }
+      }
+    ]
+  },
+  "s52": {
+    "external_services": []
+  },
+  "s53": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s34"
+        ],
+        "probabilities": {
+          "s34": 1.0
+        }
+      }
+    ]
+  },
+  "s54": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s55"
+        ],
+        "probabilities": {
+          "s55": 1.0
+        }
+      }
+    ]
+  },
+  "s55": {
+    "external_services": []
+  },
+  "s56": {
+    "external_services": []
+  },
+  "s57": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s58"
+        ],
+        "probabilities": {
+          "s58": 0.5
         }
       },
       {
@@ -704,7 +668,42 @@
           "s34"
         ],
         "probabilities": {
-          "s34": 0.25
+          "s34": 0.5
+        }
+      }
+    ]
+  },
+  "s58": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s59"
+        ],
+        "probabilities": {
+          "s59": 1.0
+        }
+      }
+    ]
+  },
+  "s59": {
+    "external_services": [
+      {
+        "seq_len": 100,
+        "services": [
+          "s57"
+        ],
+        "probabilities": {
+          "s57": 0.5
+        }
+      },
+      {
+        "seq_len": 100,
+        "services": [
+          "s51"
+        ],
+        "probabilities": {
+          "s51": 0.5
         }
       }
     ]
