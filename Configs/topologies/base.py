@@ -9,8 +9,8 @@ class TopologyGenerator:
         self.service_graph = {}
         self.sizes = {
             'small': 60,
-            'medium': 700,
-            'large': 4000
+            'medium': 300,
+            'large': 10,
         }
         self.num_services = self.sizes[size]
     

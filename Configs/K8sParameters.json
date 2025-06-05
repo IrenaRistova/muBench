@@ -1,15 +1,16 @@
 {
    "K8sParameters": {
-      "prefix_yaml_file": "mubench",
+      "prefix_yaml_file": "MicroServiceDeployment",
       "namespace": "default",
-      "image": "msvcbench/microservice:latest",
+      "image": "msvcbench/microservice_v5-screen:latest",
       "cluster_domain": "cluster",
       "path": "/api/v1",
-      "dns-resolver": "coredns.kube-system.svc.cluster.local",
+      "dns-resolver": "kube-dns.kube-system.svc.cluster.local",
       "scheduler-name": "default-scheduler",
-      "sleep": 0,
+      "sleep": 2,
       "nginx-gw": true,
       "nginx-svc-type": "NodePort",
+      "service-type": "ClusterIP",
       "no-apply": false
    },
    "InternalServiceFilePath": "CustomFunctions",

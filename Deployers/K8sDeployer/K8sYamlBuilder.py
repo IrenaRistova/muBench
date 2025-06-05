@@ -178,3 +178,21 @@ def create_internalservice_configmap_yaml_file(k8s_parameters, nfs, output_path,
     with open(f"{output_path}/yamls/{k8s_parameters['prefix_yaml_file']}-ConfigMapInternalServices.yaml", "w") as file:
         file.write(f)
     print("Internal-Services Configmap Created!")
+
+def create_deployment_config():
+    print("---")
+    try:
+        with open(workmodel_path) as f:
+            workmodel = json.load(f)
+    except Exception as err:
+        print("ERROR: in RunK8sDeployer,", err)
+        exit(1)
+    K8sYamlBuilder.customization_work_model(workmodel, k8s_parameters)
+    K8sYamlBuilder.create_deployment_service_yaml_files(workmodel, k8s_parameters, nfs_conf, builder_module_path)
+    # K8sYamlBuilder.create_workmodel_configmap_yaml_file(workmodel, k8s_parameters, nfs_conf, builder_module_path)
+    K8sYamlBuilder.create_internalservice_configmap_yaml_file(k8s_parameters, nfs_conf, output_path, internal_service_functions_file_path)
+    created_items = os.listdir(f"{builder_module_path}/yamls")
+    print(f"The following files are created: {created_items}")
+    print("---")
+    # return a list of the files just created
+    return created_items, workmodel
