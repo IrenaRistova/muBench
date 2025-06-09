@@ -132,7 +132,7 @@
       },
       "ServiceGraphFilePath": {
          "type": "metadata",
-         "value": "Configs/Mesh/servicegraph_meshtopology_large.json"
+         "value": "Configs/Tiered/servicegraph_tieredtopology_large.json"
       },
       "OutputPath": {
          "type": "metadata",
