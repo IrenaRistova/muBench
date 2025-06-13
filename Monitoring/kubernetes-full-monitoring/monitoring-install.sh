@@ -36,12 +36,16 @@ helm install istiod istio/istiod -n istio-system \
   --set global.proxy.containerSecurityContext.ulimits.nofile.hard=1048576 \
   --set global.proxy.containerSecurityContext.runAsUser=1337 \
   --set global.proxy.containerSecurityContext.runAsGroup=1337 \
+  --set global.proxy.resources.requests.cpu=50m \
+  --set global.proxy.resources.limits.cpu=100m \
   --wait
 helm install istio-ingressgateway istio/gateway -n istio-system \
   --set global.proxy.containerSecurityContext.ulimits.nofile.soft=1048576 \
   --set global.proxy.containerSecurityContext.ulimits.nofile.hard=1048576 \
   --set global.proxy.containerSecurityContext.runAsUser=1337 \
-  --set global.proxy.containerSecurityContext.runAsGroup=1337
+  --set global.proxy.containerSecurityContext.runAsGroup=1337 \
+  --set global.proxy.resources.requests.cpu=50m \
+  --set global.proxy.resources.limits.cpu=100m
 kubectl label namespace default istio-injection=enabled
 
 # Istio - Prometeus integration

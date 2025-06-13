@@ -139,3 +139,14 @@ dmypy.json
 # Pyre type checker
 .pyre/
 .vscode/launch.jsonConfigs/Mesh/servicegraph_meshtopology_large.json
+
+# Generated topology folders
+Chain/
+ComplexCycle/
+DB-Centric/
+Mesh/
+SimpleCycle/
+Star/
+Tiered/
+topologies/
+Tree/

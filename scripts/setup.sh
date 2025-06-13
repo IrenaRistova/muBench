@@ -12,6 +12,8 @@ minikube start \
   --disk-size=1024000 \
   --extra-config=kubelet.max-pods=1500 \
   --driver=docker \
+  --container-runtime=containerd \
+  --network-plugin=cni \
   --extra-config=kubelet.reserved-cpus=0,1,2,3 \
   --extra-config=kubelet.reserved-memory=0:memory=4Gi \
   --extra-config=kubelet.cpu-manager-policy=static \
@@ -41,6 +43,7 @@ echo "y" | docker exec -i mubench bash -c "python3 Deployers/K8sDeployer/RunK8sD
 docker exec -it mubench bash -c "python3 Deployers/K8sDeployer/RunK8sDeployer.py -c Configs/K8sParameters.json"
 
 echo "Starting monitoring loop (press Ctrl+C to stop)..."
+echo "When all pods are running, run: python3 Benchmarks/Runner/Runner.py -c Configs/RunnerParameters.json"
 while true; do
     echo -e "\n=== $(date) ==="
     echo "Pod status by state:"
@@ -50,6 +53,3 @@ while true; do
     echo -e "\nWaiting 15 seconds before next check..."
     sleep 15
 done
-
-echo "Check if all pods are running and then run python3 Benchmarks/Runner/Runner.py -c Configs/RunnerParameters.json after docker exec -it mubench bash" 
-
