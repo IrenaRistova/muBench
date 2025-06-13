@@ -13,10 +13,10 @@
                   100
                ]
             },
-            "workers": 4,
-            "threads": 16,
-            "cpu-requests": "1000m",
-            "cpu-limits": "1000m"
+            "workers": 2,
+            "threads": 4,
+            "cpu-requests": "75m",
+            "cpu-limits": "500m"
          }
       },
       "f1": {
@@ -26,10 +26,10 @@
             "recipient": "service",
             "probability": 0.0,
             "parameters": {},
-            "workers": 4,
-            "threads": 16,
-            "cpu-requests": "1000m",
-            "cpu-limits": "1000m"
+            "workers": 2,
+            "threads": 4,
+            "cpu-requests": "75m",
+            "cpu-limits": "500m"
          }
       },
       "f2": {
@@ -65,10 +65,10 @@
                },
                "mean_response_size": 11
             },
-            "workers": 4,
-            "threads": 16,
-            "cpu-requests": "1000m",
-            "cpu-limits": "1000m"
+            "workers": 2,
+            "threads": 4,
+            "cpu-requests": "75m",
+            "cpu-limits": "500m"
          }
       },
       "f3": {
@@ -104,11 +104,11 @@
                },
                "mean_response_size": 11
             },
-            "workers": 4,
-            "threads": 16,
-            "cpu-requests": "1000m",
-            "cpu-limits": "1000m",
-            "replicas": 2
+            "workers": 2,
+            "threads": 4,
+            "cpu-requests": "75m",
+            "cpu-limits": "500m",
+            "replicas": 1
          }
       },
       "request_method": {

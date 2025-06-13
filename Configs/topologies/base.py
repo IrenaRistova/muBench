@@ -2,16 +2,13 @@ from typing import Dict
 import json
 import os
 from igraph import Graph, plot
+from Configs.topology_config import TOPOLOGY_SIZES
 
 class TopologyGenerator:
     def __init__(self, size: str):
         self.size = size
         self.service_graph = {}
-        self.sizes = {
-            'small': 60,
-            'medium': 700,
-            'large': 5
-        }
+        self.sizes = TOPOLOGY_SIZES
         self.num_services = self.sizes[size]
     
     def generate(self) -> Dict:

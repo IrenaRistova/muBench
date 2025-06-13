@@ -1,19 +1,21 @@
 import json
 import os
+import sys
 from typing import Dict, List
 from igraph import Graph, plot
-from topologies import (StarTopology, ChainTopology, MeshTopology, TieredTopology, 
+
+# Add the parent directory to Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from Configs.topologies import (StarTopology, ChainTopology, MeshTopology, TieredTopology, 
                        DBCentricTopology, TreeTopology, SimpleCycleTopology, ComplexCycleTopology)
+from Configs.topology_config import TOPOLOGY_SIZES
 
 class TopologyGenerator:
     def __init__(self, size: str):
         self.size = size
         self.service_graph = {}
-        self.sizes = {
-            'small': 60,
-            'medium': 700,
-            'large': 5,
-        }
+        self.sizes = TOPOLOGY_SIZES
         self.num_services = self.sizes[size]
         
     def generate(self) -> Dict:
