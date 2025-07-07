@@ -1,5 +1,5 @@
 TOPOLOGY_SIZES = {
-    'small': 60,
-    'medium': 700,
+    'small': 20,
+    'medium': 100,
     'large': 200,
 } 

@@ -1,14 +1,19 @@
 #!/bin/bash
 
 echo "Checking existing SSH tunnels..."
-ps aux | grep "ssh.*-L" | grep -v grep
+ps aux | grep '[s]sh -N -L'
 
 echo -e "\nCleaning up existing SSH tunnels..."
-pkill -f "ssh.*-L" || true
+ps aux | grep '[s]sh -N -L' | awk '{print $2}' | xargs -r kill -9
+if [ $? -eq 0 ]; then
+  echo "Successfully killed SSH tunnel processes"
+else
+  echo "No SSH tunnel processes found or already killed"
+fi
 sleep 2
 
 echo -e "\nVerifying cleanup..."
-ps aux | grep "ssh.*-L" | grep -v grep
+ps aux | grep '[s]sh -N -L'
 
 echo -e "\nCleanup complete. You can now start new SSH tunnels." 
 

@@ -24,9 +24,9 @@ class TopologyGenerator:
         print(f"✅ Generated {filename}")
         
     def visualize(self, output_dir: str):
-        if self.size == 'large':
-            print("Skipping graph visualization for large topology.")
-            return
+        # if self.size == 'large':
+        #     print("Skipping graph visualization for large topology.")
+        #     return
         g = Graph(directed=True)
         node_names = list(self.service_graph.keys())
         g.add_vertices(node_names)

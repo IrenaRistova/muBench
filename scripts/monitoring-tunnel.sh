@@ -7,6 +7,23 @@ ps aux | grep "kubectl port-forward" | grep -v grep
 # Kill any existing port forwarding
 echo -e "\nCleaning up existing port forwards..."
 pkill -f "kubectl port-forward" || true
+
+# Robustly kill all kubectl port-forward processes
+PIDS=$(ps aux | grep '[k]ubectl port-forward' | awk '{print $2}')
+if [ -n "$PIDS" ]; then
+  echo "Force killing kubectl port-forward PIDs: $PIDS"
+  kill -9 $PIDS
+else
+  echo "No kubectl port-forward processes found."
+fi
+
+# Kill any process using the required ports
+for port in 30000 30001 30002 30003; do
+  if fuser -n tcp $port &>/dev/null; then
+    echo "Killing process using port $port"
+    fuser -k -n tcp $port
+  fi
+done
 sleep 2
 
 # Verify cleanup

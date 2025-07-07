@@ -15,8 +15,8 @@
             },
             "workers": 2,
             "threads": 4,
-            "cpu-requests": "40m",
-            "cpu-limits": "80m"
+            "cpu-requests": "15m",
+            "cpu-limits": "30m"
          }
       },
       "f1": {
@@ -28,8 +28,8 @@
             "parameters": {},
             "workers": 2,
             "threads": 4,
-            "cpu-requests": "20m",
-            "cpu-limits": "40m"
+            "cpu-requests": "10m",
+            "cpu-limits": "20m"
          }
       },
       "f2": {
@@ -67,8 +67,8 @@
             },
             "workers": 2,
             "threads": 4,
-            "cpu-requests": "40m",
-            "cpu-limits": "80m"
+            "cpu-requests": "15m",
+            "cpu-limits": "30m"
          }
       },
       "f3": {
@@ -106,8 +106,8 @@
             },
             "workers": 2,
             "threads": 4,
-            "cpu-requests": "40m",
-            "cpu-limits": "80m",
+            "cpu-requests": "20m",
+            "cpu-limits": "40m",
             "replicas": 1
          }
       },
@@ -132,7 +132,7 @@
       },
       "ServiceGraphFilePath": {
          "type": "metadata",
-         "value": "Configs/Tiered/servicegraph_tieredtopology_large.json"
+         "value": "Configs/Tree/servicegraph_treetopology_small.json"
       },
       "OutputPath": {
          "type": "metadata",
