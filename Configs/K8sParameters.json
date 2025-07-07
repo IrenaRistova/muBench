@@ -9,10 +9,10 @@
       "scheduler-name": "default-scheduler",
       "sleep": 0,
       "nginx-gw": true,
-      "nginx-svc-type": "NodePort",
+      "nginx-svc-type": "LoadBalancer",
       "no-apply": false
    },
    "InternalServiceFilePath": "CustomFunctions",
    "OutputPath": "SimulationWorkspace",
-   "WorkModelPath": "SimulationWorkspace/workmodel.json"
+   "WorkModelPath": "Examples/workmodel-serial-10services.json"
 }
