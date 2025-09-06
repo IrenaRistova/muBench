@@ -134,7 +134,9 @@ class MeshTopology(TopologyGenerator):
             num_db_services = max(3, num_db_services)
         elif self.num_services < 1000:
             num_db_services = max(5, num_db_services)
-        db_services = random.sample(list(self.service_graph.keys()), num_db_services)
+        # Exclude 's0' from being a DB
+        possible_db_services = [s for s in self.service_graph.keys() if s != 's0']
+        db_services = random.sample(possible_db_services, num_db_services)
         db_rename_map = {s: f"db{s[1:]}" for s in db_services}
         new_service_graph = {}
         # Rename services and set db_access
