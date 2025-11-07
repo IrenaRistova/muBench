@@ -8,12 +8,13 @@
 ## Feature Status Dashboard
 
 ### Active Features (In Development)
-- **experiment-runner-locust-integration** - Integrate Experiment Runner with Locust to orchestrate muBench benchmarking 🔄 **IN PROGRESS**
-  - Status: Basic structure complete, testing pending
+- **experiment-runner-locust-integration** - Integrate Experiment Runner with Locust to orchestrate muBench benchmarking ✅ **TESTED**
+  - Status: Basic integration tested and verified
   - Location: `specs/active/experiment-runner-locust-integration/`
   - Implementation: `experiment-runner/examples/mubench-benchmarking/`
   - Progress: See [feature-brief.md](active/experiment-runner-locust-integration/feature-brief.md)
-  - Notes: RunnerConfig.py created with RunTableModel (540 runs), SSH tunnel and Locust integration complete. Deployment and Prometheus integration pending. Ready for testing with standalone gateway.
+  - Test Results: See [TEST_RESULTS.md](active/experiment-runner-locust-integration/TEST_RESULTS.md)
+  - Notes: RunnerConfig.py created with RunTableModel (540 runs), SSH tunnel and Locust integration complete and tested. Deployment and Prometheus integration pending (require minikube/Prometheus).
 
 - **locust-workload-setup** - Locust workload generator setup for Phase 3 benchmarking ✅ **COMPLETE**
   - Status: Complete and tested
@@ -42,12 +43,13 @@ Currently no backlog features.
 
 ## Statistics
 - **Total Features**: 3
-- **Active**: 3 (1 complete, 1 in progress, 1 partially complete)
+- **Active**: 3 (2 complete/tested, 1 partially complete)
 - **Completed**: 0 (moved to active with complete status)
 - **Backlog**: 0
 
 ## Recent Activity
-- **2025-01-XX**: Experiment Runner + Locust integration started 🔄 - RunnerConfig.py created, basic integration complete, testing pending
+- **2025-11-07**: Experiment Runner + Locust integration tested ✅ - Basic integration verified and working, test results documented
+- **2025-01-XX**: Experiment Runner + Locust integration started 🔄 - RunnerConfig.py created, basic integration complete
 - **2025-01-XX**: Locust workload generator integrated ✅ - Installed, tested, and ready for Phase 3 benchmarking
 - **2025-01-27**: SSH tunnel testing setup - Python version working ✅, Docker version ready 🔄, Documentation pending 📝
 

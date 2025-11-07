@@ -268,21 +268,21 @@ This project uses **Spec-Driven Development (SDD)** to structure research tasks 
   - Gateway URL: `http://localhost:9090` (via tunnel)
   - Documentation: `Benchmarks/Locust/README.md`
 
-**Experiment Runner** - [GitHub Repository](https://github.com/S2-group/experiment-runner) 🔄 **INTEGRATION IN PROGRESS**
-> **Status**: Basic structure complete, testing pending. Deployment and Prometheus integration pending.
+**Experiment Runner** - [GitHub Repository](https://github.com/S2-group/experiment-runner) ✅ **INTEGRATION TESTED**
+> **Status**: Basic integration tested and verified. Deployment and Prometheus integration pending (require minikube/Prometheus).
 
-- **Status**: 🔄 Integration in progress
+- **Status**: ✅ Integration tested
 - **Location**: `experiment-runner/examples/mubench-benchmarking/` (sibling to muBench)
 - **Purpose**: Automatic orchestration of measurement-based experiments
 - **Documentation**: [https://github.com/S2-group/experiment-runner](https://github.com/S2-group/experiment-runner)
 - **Deployment Location**: **Host machine** (centralized management, easier monitoring)
 - **Implementation**:
-  - ✅ RunnerConfig.py created with RunTableModel (540 runs)
-  - ✅ SSH tunnel integration (before_experiment hook)
-  - ✅ Locust execution integration (interact hook)
-  - ✅ Locust metric parsing (populate_run_data hook)
-  - 🔄 muBench deployment integration (start_run hook - pending)
-  - 🔄 Prometheus metric collection (stop_measurement hook - pending)
+  - ✅ RunnerConfig.py created with RunTableModel (540 runs) - Tested
+  - ✅ SSH tunnel integration (before_experiment hook) - Tested
+  - ✅ Locust execution integration (interact hook) - Tested
+  - ✅ Locust metric parsing (populate_run_data hook) - Tested
+  - 🔄 muBench deployment integration (start_run hook - pending, requires minikube)
+  - 🔄 Prometheus metric collection (stop_measurement hook - pending, requires Prometheus)
 - **Features**:
   - Run Table Model for defining experiment measurements
   - Factors and Treatment levels support
@@ -301,6 +301,7 @@ This project uses **Spec-Driven Development (SDD)** to structure research tasks 
   - 🔄 Collects Prometheus metrics - pending
 - **References**:
   - Implementation: `specs/active/experiment-runner-locust-integration/feature-brief.md`
+  - Test Results: `specs/active/experiment-runner-locust-integration/TEST_RESULTS.md` ✅
   - Config file: `experiment-runner/examples/mubench-benchmarking/RunnerConfig.py`
   - Status: `specs/active/experiment-runner-locust-integration/CURRENT_STATUS.md`
   - Manages experiment execution workflow
