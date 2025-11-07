@@ -1,0 +1,442 @@
+# Project Overview: µBench
+
+## Project Description
+µBench is a factory of benchmarking microservice applications. It generates dummy microservice applications that can be customized by users and deployed on Kubernetes. µBench is particularly useful for researchers and cloud platform developers who need real microservice applications to benchmark their findings, such as new resource control mechanisms or AI-driven orchestration.
+
+**Academic Reference**: Detti, A., Funari, L., & Petrucci, L. (2023). µBench: An open-source factory of benchmark microservice applications. IEEE Transactions on Parallel and Distributed Systems. [https://doi.org/10.1109/TPDS.2023.3236447](https://doi.org/10.1109/TPDS.2023.3236447)
+
+## Project Goals
+
+### General Goals
+- Generate customizable microservice applications for benchmarking
+- Support research in cloud/edge computing platforms
+- Enable performance evaluation of microservice architectures
+- Provide comprehensive monitoring and observability tools
+- Support educational demonstrations of microservice advantages and challenges
+
+### Research Project Goals
+- **Deploy existing µBench example topologies** as benchmark applications
+- **Evaluate performance and energy efficiency** of different microservice topologies
+- **Study system size impact** (5, 10, 20 services) on resource utilization and scalability
+- **Provide controlled environment** for topology-based benchmarking
+- **Collect and analyze metrics** for performance and energy proxy metrics for comparative analysis
+- **Support future extensions** for AI-based orchestration and energy modeling research
+
+### Dataset Goals
+- **Build comprehensive benchmarking dataset** for microservice-based systems
+- **Create reusable dataset** in dedicated GitHub repository for third-party researchers
+- **Systematically generate systems** with different communication topologies (star, chain, ring, random, etc.)
+- **Define system families** (8-10 families) with 3 system sizes each (small, medium, large)
+- **Enable evaluation** of approaches targeting energy and performance of microservice-based systems
+
+### Research Methodology
+
+**Workload Generation**
+- **Tool**: Locust (Python-based load testing framework)
+- **Documentation**: [https://docs.locust.io/](https://docs.locust.io/)
+- **Execution Location**: Host machine
+- **Access Method**: SSH tunnel to muBench gateway (port 9090)
+- **Purpose**: Generate controlled HTTP traffic patterns for performance evaluation
+- **Integration**: Works with muBench gateway via SSH tunnel
+
+**Experiment Orchestration**
+- **Tool**: Experiment Runner ([S2-group/experiment-runner](https://github.com/S2-group/experiment-runner))
+- **Documentation**: [https://github.com/S2-group/experiment-runner](https://github.com/S2-group/experiment-runner)
+- **Purpose**: Automate experiment execution, measurement collection, and data management
+- **Features**:
+  - Define experiment factors and treatment levels
+  - Orchestrate multiple experiment runs
+  - Collect and aggregate performance/energy metrics
+  - Support experiment restart and recovery
+- **Deployment Decision**: **Pending research** - Will determine optimal location (server vs host machine)
+  - **Server deployment**: Direct Kubernetes access, lower latency
+  - **Host deployment**: Centralized management, easier monitoring
+- **Integration Points**:
+  - muBench deployment orchestration
+  - Locust workload coordination
+  - Prometheus metric collection
+  - Energy measurement integration (future)
+
+### Research Phases
+
+**Phase 3: Benchmarking**
+- **Execution**: Use Experiment Runner to execute each system in random order
+- **Execution Guidelines**: Follow Green lab recommendations for server usage
+- **Repetitions**: Run each system 30 times for statistical significance
+- **System Optimization**: Strip out heavy monitoring infrastructure to reduce overhead
+  - muBench generates monitoring infrastructure (Prometheus, Grafana, Istio, etc.)
+  - Evaluate which components can be removed without losing essential metrics
+- **Metrics Collection**:
+  - **Per-Service Metrics**:
+    - CPU utilization per service
+    - Power consumption per service
+  - **System-Wide Metrics**:
+    - CPU utilization for the whole server
+    - Power consumption for the whole server
+  - **Communication Metrics**:
+    - Logging of all messages exchanged among services
+  - **Data Requirements**:
+    - All data must be carefully timestamped
+    - Store in CSV format (primary)
+    - **BONUS**: Open Telemetry logs format (additional format)
+
+**Phase 4: Usage Showcase**
+- **Purpose**: Demonstrate how the dataset can be used in practice
+- **Deliverables**:
+  - Descriptive statistics on collected data
+  - Interesting visualizations and plots
+  - Analysis of patterns and relationships in the data
+- **Goal**: Provide examples of dataset usage for future researchers
+
+**Phase 5: Reporting and Dataset Packaging**
+- **Final Report**:
+  - Format: ACM format (max 8 pages, double column)
+  - Content: Describe all steps and results from previous phases
+  - Sections: Methodology, system families, benchmarking results, dataset structure
+- **GitHub Repository**:
+  - Polish and finalize dataset repository
+  - Include comprehensive documentation
+  - Provide usage examples and showcase
+  - Reference example: [AndroidTimeMachine/open_source_android_apps](https://github.com/AndroidTimeMachine/open_source_android_apps)
+- **Dataset Structure**:
+  - Organized by system families
+  - Include metadata and documentation
+  - Provide data access and usage guidelines
+
+## Architecture Overview
+
+### Core Components
+
+1. **Service-Cell** (`ServiceCell/`)
+   - Main software unit implementing each microservice
+   - Docker container with Python program
+   - Executes internal and external services
+   - Supports HTTP REST and gRPC communication
+
+2. **Service Graph Generator** (`ServiceGraphGenerator/`)
+   - Generates dependency graphs between microservices
+   - Creates service topology configurations
+   - Supports various graph patterns (star, chain, tree, etc.)
+
+3. **Work Model Generator** (`WorkModelGenerator/`)
+   - Generates work models defining service behaviors
+   - Specifies internal service functions (CPU, memory, I/O stress)
+   - Defines external service call patterns
+
+4. **K8s Deployer** (`Deployers/K8sDeployer/`)
+   - Deploys microservice applications to Kubernetes
+   - Generates YAML files for deployments, services, configmaps
+   - Manages nginx API gateway
+
+5. **Benchmark Runner** (`Benchmarks/Runner/`)
+   - Executes workload tests against deployed applications
+   - Supports greedy, periodic, and file-based workload types
+   - Collects performance metrics and latency statistics
+
+6. **Monitoring Stack** (`Monitoring/`)
+   - Prometheus for metrics collection
+   - Grafana for visualization
+   - Jaeger for distributed tracing
+   - Kiali for service mesh observability
+   - Istio service mesh integration
+
+### Key Technologies
+- **Container Runtime**: Docker, containerd
+- **Orchestration**: Kubernetes (minikube for local development)
+- **Service Mesh**: Istio
+- **Monitoring**: Prometheus, Grafana, Jaeger, Kiali
+- **Languages**: Python 3.8+, YAML, JSON
+- **Protocols**: HTTP REST, gRPC
+
+## Current Status
+- **Phase**: Active Development
+- **Version**: Latest
+- **Environment**: Remote server (gl3) with minikube cluster
+- **Last Updated**: 2025-11-07
+
+## Deployment Architecture
+
+### Server Setup (gl3)
+- **Kubernetes**: minikube cluster
+- **Container Runtime**: Docker with containerd
+- **Network**: CNI plugin
+- **Access**: SSH through jump host (glgate)
+
+### Service Access
+- **API Gateway**: nginx (LoadBalancer service, port 9090 via port-forward)
+- **Monitoring**: 
+  - Prometheus: Port 30000
+  - Grafana: Port 30001
+  - Jaeger: Port 30002
+  - Kiali: Port 30003
+
+### SSH Tunneling
+- Access to services via SSH tunnels from host machine
+- Port forwarding scripts in `scripts/` directory
+- Gateway and monitoring tunnels configured
+
+### Workload Generation and Experiment Orchestration
+
+**Locust Workload Generator**
+- **Location**: Host machine (accessed via SSH tunnel)
+- **Purpose**: Generate HTTP workload traffic to muBench applications
+- **Documentation**: [https://docs.locust.io/](https://docs.locust.io/)
+- **Official Website**: [https://locust.io/](https://locust.io/)
+- **Access**: Via SSH tunnel to gateway (port 9090)
+- **Usage**: Load testing and performance evaluation
+- **References**: 
+  - Gateway tunnel: `scripts/gateway-tunnel.sh` (server) + `scripts/gateway-tunnel-local.sh` (host)
+  - Gateway URL: `http://localhost:9090` (via tunnel)
+
+**Experiment Runner** - [GitHub Repository](https://github.com/S2-group/experiment-runner)
+- **Purpose**: Automatic orchestration of measurement-based experiments
+- **Documentation**: [https://github.com/S2-group/experiment-runner](https://github.com/S2-group/experiment-runner)
+- **Features**:
+  - Run Table Model for defining experiment measurements
+  - Factors and Treatment levels support
+  - Restart capability for incomplete experiments
+  - Persistent storage of raw and aggregated data
+  - Progress tracking
+- **Deployment Location**: **To be determined** (server or host machine)
+  - Decision pending based on research requirements
+  - May run on server for direct Kubernetes access
+  - May run on host machine for centralized experiment management
+- **Integration**: Will orchestrate muBench deployments, workload generation, and metric collection
+- **References**: 
+  - Repository: https://github.com/S2-group/experiment-runner
+  - Python-based framework for experiment automation
+
+## Active Features
+- Microservice application deployment
+- Service graph generation
+- Work model generation
+- Benchmark execution
+- Monitoring and observability
+
+## Completed Features
+- Core service-cell implementation
+- Kubernetes deployment automation
+- Monitoring stack integration
+- SSH tunnel setup for remote access
+
+## Backlog Features
+- Enhanced autopilot capabilities
+- Additional topology patterns
+- Performance optimization features
+- Extended monitoring capabilities
+
+## Project Structure
+```
+muBench/
+├── ServiceCell/          # Service-cell implementation
+├── ServiceGraphGenerator/ # Service graph generation
+├── WorkModelGenerator/   # Work model generation
+├── Deployers/            # Kubernetes deployment
+├── Benchmarks/           # Benchmark runners
+├── Monitoring/          # Monitoring stack setup
+├── Configs/             # Configuration files
+├── Examples/            # Example applications
+├── scripts/             # Setup and utility scripts
+└── specs/               # SDD specifications (NEW)
+```
+
+## Scripts and Utilities
+
+### Setup and Deployment Scripts
+
+**`scripts/setup.sh`** - Main setup script for muBench environment
+- **Path**: `scripts/setup.sh`
+- **Purpose**: 
+  - Starts minikube cluster with optimized configuration (4 CPUs, 8GB RAM)
+  - Sets system limits for Istio
+  - Creates and configures mubench Docker container
+  - Deploys muBench application to Kubernetes
+  - Monitors pod status continuously
+- **Usage**: `./scripts/setup.sh`
+- **References**: 
+  - Uses `Configs/K8sParameters.json` for deployment configuration
+  - Mounts entire project to `/root/muBench` in container
+
+**`scripts/cleanup.sh`** - Cleanup script for removing all resources
+- **Path**: `scripts/cleanup.sh`
+- **Purpose**: 
+  - Stops and removes all Docker containers, images, volumes, networks
+  - Deletes minikube cluster
+  - Complete environment cleanup
+- **Usage**: `./scripts/cleanup.sh`
+
+### SSH Tunnel Scripts (Remote Access)
+
+**`scripts/monitoring-tunnel.sh`** - Port forwarding for monitoring services (server-side)
+- **Path**: `scripts/monitoring-tunnel.sh`
+- **Purpose**: 
+  - Sets up kubectl port-forward for Prometheus (30000), Grafana (30001), Jaeger (30002), Kiali (30003)
+  - Cleans up existing port forwards before starting
+  - Provides SSH tunnel command for host machine
+- **Usage**: `./scripts/monitoring-tunnel.sh` (run on gl3 server)
+- **References**: 
+  - Services: `monitoring/prometheus-nodeport`, `monitoring/grafana-nodeport`, `istio-system/jaeger-nodeport`, `istio-system/kiali-nodeport`
+
+**`scripts/monitoring-tunnel-local.sh`** - SSH tunnel for monitoring services (host-side)
+- **Path**: `scripts/monitoring-tunnel-local.sh`
+- **Purpose**: 
+  - Creates SSH tunnel from host machine to gl3 through jump host glgate
+  - Forwards ports 30000-30003 for monitoring tools access
+- **Usage**: `./scripts/monitoring-tunnel-local.sh` (run on host machine)
+- **References**: 
+  - Requires `scripts/monitoring-tunnel.sh` to be running on server first
+
+**`scripts/gateway-tunnel.sh`** - Port forwarding for nginx gateway (server-side)
+- **Path**: `scripts/gateway-tunnel.sh`
+- **Purpose**: 
+  - Sets up kubectl port-forward for nginx gateway (port 9090)
+  - Allows access to muBench application endpoints
+  - Cleans up existing port forwards
+- **Usage**: `./scripts/gateway-tunnel.sh` (run on gl3 server)
+- **References**: 
+  - Service: `svc/gw-nginx` (port 9090:80)
+  - Used by: `Benchmarks/Runner/Runner.py` with `RunnerParameters-external.json`
+
+**`scripts/gateway-tunnel-local.sh`** - SSH tunnel for gateway access (host-side)
+- **Path**: `scripts/gateway-tunnel-local.sh`
+- **Purpose**: 
+  - Creates SSH tunnel from host machine for gateway access
+  - Forwards port 9090 for application endpoint access
+- **Usage**: `./scripts/gateway-tunnel-local.sh` (run on host machine)
+- **References**: 
+  - Requires `scripts/gateway-tunnel.sh` to be running on server first
+  - Used for testing: `curl -v http://localhost:9090/s0`
+
+**`scripts/SSH_TUNNEL_GUIDE.md`** - Complete guide for SSH tunnel setup
+- **Path**: `scripts/SSH_TUNNEL_GUIDE.md`
+- **Purpose**: 
+  - Comprehensive documentation for setting up SSH tunnels
+  - Step-by-step instructions for accessing services remotely
+  - Troubleshooting guide
+
+## Example Workmodels
+
+### Star Topology Workmodels (Serial and Parallel)
+
+Located in `Examples/` directory. These workmodels use star topology where `s0` calls all other services.
+
+#### Serial Workmodels (Sequential Service Calls)
+- **`workmodel-serial-2services.json`** - 2 services (s0, s1)
+- **`workmodel-serial-3services.json`** - 3 services (s0, s1, s2)
+- **`workmodel-serial-4services.json`** - 4 services (s0, s1, s2, s3)
+- **`workmodel-serial-5services.json`** - 5 services (s0, s1, s2, s3, s4)
+- **`workmodel-serial-6services.json`** - 6 services (s0, s1, s2, s3, s4, s5)
+- **`workmodel-serial-7services.json`** - 7 services (s0, s1, s2, s3, s4, s5, s6)
+- **`workmodel-serial-8services.json`** - 8 services (s0, s1, s2, s3, s4, s5, s6, s7)
+- **`workmodel-serial-9services.json`** - 9 services (s0, s1, s2, s3, s4, s5, s6, s7, s8)
+- **`workmodel-serial-10services.json`** - 10 services (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9)
+
+#### Parallel Workmodels (Parallel Service Calls)
+- **`workmodel-parallel-3services.json`** - 3 services (s0, s1, s2)
+- **`workmodel-parallel-4services.json`** - 4 services (s0, s1, s2, s3)
+- **`workmodel-parallel-5services.json`** - 5 services (s0, s1, s2, s3, s4)
+- **`workmodel-parallel-6services.json`** - 6 services (s0, s1, s2, s3, s4, s5)
+- **`workmodel-parallel-7services.json`** - 7 services (s0, s1, s2, s3, s4, s5, s6)
+- **`workmodel-parallel-8services.json`** - 8 services (s0, s1, s2, s3, s4, s5, s6, s7)
+- **`workmodel-parallel-9services.json`** - 9 services (s0, s1, s2, s3, s4, s5, s6, s7, s8)
+- **`workmodel-parallel-10services.json`** - 10 services (s0, s1, s2, s3, s4, s5, s6, s7, s8, s9)
+
+### Complex Topology Workmodels (20 Services)
+
+All located in `Examples/` directory with 20 services each:
+
+- **`workmodelA.json`** - 20 services (s0-s19), Topology A pattern
+- **`workmodelB.json`** - 20 services (s0-s19), Topology B pattern
+- **`workmodelC.json`** - 20 services (s0-s19), Topology C pattern
+- **`workmodelC-multi.json`** - 20 services (s0-s19), Topology C with randomness and heterogeneity
+- **`workmodelD.json`** - 20 services (s0-s19), Topology D pattern
+
+**Note**: Topology visualizations available in `Examples/servicegraphA.png`, `servicegraphB.png`, `servicegraphC.png`, `servicegraphD.png`
+
+### Specialized Workmodels
+
+- **`Examples/Teastore/workmodel-teastore-emulation.json`** - 6 services (s0-s5)
+  - Emulates TeaStore application topology
+  - Includes probabilistic service calls
+
+### Alibaba Traces
+
+- **`Examples/Alibaba/traces-mbench.zip`** - Contains 30 applications derived from Alibaba microservice traces
+  - Generated using Matlab scripts in `Examples/Alibaba/Matlab/`
+  - Includes trace-based workload patterns
+
+### Workmodel Usage
+
+Workmodels are referenced in:
+- **`Configs/K8sParameters.json`** - `WorkModelPath` field (default: `Examples/workmodelD.json`)
+- **`Deployers/K8sDeployer/RunK8sDeployer.py`** - Reads workmodel to generate Kubernetes deployments
+- **`WorkModelGenerator/RunWorkModelGen.py`** - Generates new workmodels
+
+## Key Configuration Files
+
+### Kubernetes Configuration
+
+**`Configs/K8sParameters.json`** - Main Kubernetes deployment configuration
+- **Path**: `Configs/K8sParameters.json`
+- **Key Settings**:
+  - `namespace`: Kubernetes namespace (default: "default")
+  - `image`: Docker image for service-cells (`msvcbench/microservice:latest`)
+  - `nginx-svc-type`: Service type for gateway ("LoadBalancer" or "NodePort")
+  - `WorkModelPath`: Path to workmodel file (default: `Examples/workmodelD.json`)
+  - `InternalServiceFilePath`: Path to custom functions (`CustomFunctions`)
+  - `OutputPath`: Output directory for generated YAMLs (`SimulationWorkspace`)
+
+### Benchmark Runner Configuration
+
+**`Configs/RunnerParameters.json`** - Benchmark runner config (for server-side execution)
+- **Path**: `Configs/RunnerParameters.json`
+- **Key Settings**:
+  - `ms_access_gateway`: Gateway URL (`http://192.168.49.2:31113` - minikube IP)
+  - `workload_type`: "greedy", "periodic", or "file"
+  - `workload_events`: Number of requests for greedy/periodic
+  - `thread_pool_size`: Concurrent request threads
+
+**`Configs/RunnerParameters-external.json`** - Benchmark runner config (for host-side execution)
+- **Path**: `Configs/RunnerParameters-external.json`
+- **Key Settings**:
+  - `ms_access_gateway`: Gateway URL (`http://localhost:9090` - via SSH tunnel)
+  - Used when running benchmarks from host machine with gateway tunnel
+
+### Service Graph Configuration
+
+**`Configs/ServiceGraphParameters.json`** - Service graph generation configuration
+- **Path**: `Configs/ServiceGraphParameters.json`
+- **Used by**: `ServiceGraphGenerator/RunServiceGraphGen.py`
+
+**`Configs/WorkModelParameters.json`** - Work model generation configuration
+- **Path**: `Configs/WorkModelParameters.json`
+- **Used by**: `WorkModelGenerator/RunWorkModelGen.py`
+
+## Documentation and References
+
+### Project Documentation
+- **µBench Manual**: `Docs/Manual.md` - Complete guide for using µBench
+- **µBench README**: `README.md` - Project overview and quick start
+- **µBench Repository**: [https://github.com/mSvcBench/muBench](https://github.com/mSvcBench/muBench/tree/main)
+- **µBench Docker README**: `Docker-README.md` - Docker container information
+- **µBench Paper**: Detti, A., Funari, L., & Petrucci, L. (2023). µBench: An open-source factory of benchmark microservice applications. IEEE Transactions on Parallel and Distributed Systems. [https://doi.org/10.1109/TPDS.2023.3236447](https://doi.org/10.1109/TPDS.2023.3236447)
+
+### External Tools Documentation
+
+**Experiment Runner**
+- **Repository**: [https://github.com/S2-group/experiment-runner](https://github.com/S2-group/experiment-runner)
+- **Purpose**: Automatic orchestration of measurement-based experiments
+- **Documentation**: Available in repository's documentation folder
+- **Features**: Run Table Model, Factors/Treatments, experiment restart, data persistence
+
+**Locust**
+- **Official Website**: [https://locust.io/](https://locust.io/)
+- **Documentation**: [https://docs.locust.io/](https://docs.locust.io/)
+- **Purpose**: Python-based load testing framework
+- **Usage**: Generate HTTP workload traffic for performance evaluation
+
+### SDD Workflow Documentation
+- [Guidelines](../.sdd/guidelines.md)
+- [Configuration](../.sdd/config.json)
+- [Templates](../.sdd/templates/)
+
