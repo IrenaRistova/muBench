@@ -537,14 +537,16 @@ muBench/
 ### Current Research Phases
 
 - **Phase 3: Benchmarking** - Run Experiment Runner, collect CPU/power metrics, logging
+  - ✅ Locust workload generator integrated and tested
+  - 🔄 Experiment Runner integration (pending)
 - **Phase 4: Usage Showcase** - Descriptive statistics, visualizations, plots
 - **Phase 5: Reporting** - ACM format report, GitHub dataset repository
 
 ### Key Tools
 
 - **µBench** - Microservice application factory
-- **Experiment Runner** - Experiment orchestration framework
-- **Locust** - Workload generation
+- **Experiment Runner** - Experiment orchestration framework (pending integration)
+- **Locust** - Workload generation ✅ **INTEGRATED** (v2.42.2, tested and ready)
 - **Prometheus/Grafana** - Monitoring and visualization
 - **Kubernetes/minikube** - Container orchestration
 
