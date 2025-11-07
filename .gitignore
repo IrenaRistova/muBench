@@ -149,3 +149,48 @@ SimpleCycle/
 Star/
 Tiered/
 Tree/
+
+# SSH keys and configuration (SENSITIVE - DO NOT COMMIT)
+~/.ssh/
+.ssh/
+**/.ssh/
+**/.ssh/config
+**/.ssh/id_*
+*.pem
+*.key
+id_*
+*.pub
+!*.pub.example
+ssh_config
+ssh_config.*
+*ssh_config*
+
+# Credentials and secrets
+*.secret
+*.credentials
+*credentials*
+*secrets*
+.env.local
+.env.*.local
+config.local
+*_local.json
+*_local.yaml
+*_local.yml
+
+# Kubernetes config files (may contain credentials)
+config
+*.kubeconfig
+kubeconfig
+~/.kube/config
+
+# Temporary files
+*.tmp
+*.temp
+/tmp/
+/tmp/*
+*.log
+*.pid
+
+# OS-specific
+.DS_Store
+Thumbs.db

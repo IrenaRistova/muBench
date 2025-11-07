@@ -5,6 +5,12 @@
 
 **Academic Reference**: Detti, A., Funari, L., & Petrucci, L. (2023). µBench: An open-source factory of benchmark microservice applications. IEEE Transactions on Parallel and Distributed Systems. [https://doi.org/10.1109/TPDS.2023.3236447](https://doi.org/10.1109/TPDS.2023.3236447)
 
+## SDD Workflow Guide
+
+This project uses **Spec-Driven Development (SDD)** to structure research tasks and implementations. When working on research tasks, use the SDD commands to create specifications, plans, and tasks.
+
+**For SDD command instructions and workflow guide, see: [README_SDD.md](README_SDD.md)**
+
 ## Project Goals
 
 ### General Goals
