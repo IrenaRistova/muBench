@@ -8,6 +8,13 @@
 ## Feature Status Dashboard
 
 ### Active Features (In Development)
+- **experiment-runner-locust-integration** - Integrate Experiment Runner with Locust to orchestrate muBench benchmarking 🔄 **IN PROGRESS**
+  - Status: Basic structure complete, testing pending
+  - Location: `specs/active/experiment-runner-locust-integration/`
+  - Implementation: `experiment-runner/examples/mubench-benchmarking/`
+  - Progress: See [feature-brief.md](active/experiment-runner-locust-integration/feature-brief.md)
+  - Notes: RunnerConfig.py created with RunTableModel (540 runs), SSH tunnel and Locust integration complete. Deployment and Prometheus integration pending. Ready for testing with standalone gateway.
+
 - **locust-workload-setup** - Locust workload generator setup for Phase 3 benchmarking ✅ **COMPLETE**
   - Status: Complete and tested
   - Location: `specs/active/locust-workload-setup/`
@@ -34,12 +41,13 @@ Currently no backlog features.
 - ⚙️ [Modify Configuration](../.sdd/config.json)
 
 ## Statistics
-- **Total Features**: 2
-- **Active**: 2 (1 complete, 1 partially complete)
+- **Total Features**: 3
+- **Active**: 3 (1 complete, 1 in progress, 1 partially complete)
 - **Completed**: 0 (moved to active with complete status)
 - **Backlog**: 0
 
 ## Recent Activity
+- **2025-01-XX**: Experiment Runner + Locust integration started 🔄 - RunnerConfig.py created, basic integration complete, testing pending
 - **2025-01-XX**: Locust workload generator integrated ✅ - Installed, tested, and ready for Phase 3 benchmarking
 - **2025-01-27**: SSH tunnel testing setup - Python version working ✅, Docker version ready 🔄, Documentation pending 📝
 

@@ -202,7 +202,7 @@ This project uses **Spec-Driven Development (SDD)** to structure research tasks 
 - **Recent Updates**:
   - ✅ Locust workload generator integrated and tested
   - ✅ SSH tunnel testing setup (standalone mock gateway)
-  - 🔄 Experiment Runner integration (pending)
+  - 🔄 Experiment Runner integration in progress (basic structure complete, **testing required**)
 
 ## Deployment Architecture
 
@@ -268,28 +268,41 @@ This project uses **Spec-Driven Development (SDD)** to structure research tasks 
   - Gateway URL: `http://localhost:9090` (via tunnel)
   - Documentation: `Benchmarks/Locust/README.md`
 
-**Experiment Runner** - [GitHub Repository](https://github.com/S2-group/experiment-runner)
-> **Note**: Deployment location and integration approach are preliminary ideas that need research and validation.
+**Experiment Runner** - [GitHub Repository](https://github.com/S2-group/experiment-runner) 🔄 **INTEGRATION IN PROGRESS**
+> **Status**: Basic structure complete, testing pending. Deployment and Prometheus integration pending.
 
+- **Status**: 🔄 Integration in progress
+- **Location**: `experiment-runner/examples/mubench-benchmarking/` (sibling to muBench)
 - **Purpose**: Automatic orchestration of measurement-based experiments
 - **Documentation**: [https://github.com/S2-group/experiment-runner](https://github.com/S2-group/experiment-runner)
-- **Deployment Location**: **Host machine** (preliminary decision - centralized management, easier monitoring)
+- **Deployment Location**: **Host machine** (centralized management, easier monitoring)
+- **Implementation**:
+  - ✅ RunnerConfig.py created with RunTableModel (540 runs)
+  - ✅ SSH tunnel integration (before_experiment hook)
+  - ✅ Locust execution integration (interact hook)
+  - ✅ Locust metric parsing (populate_run_data hook)
+  - 🔄 muBench deployment integration (start_run hook - pending)
+  - 🔄 Prometheus metric collection (stop_measurement hook - pending)
 - **Features**:
   - Run Table Model for defining experiment measurements
   - Factors and Treatment levels support
   - Restart capability for incomplete experiments
   - Persistent storage of raw and aggregated data
   - Progress tracking
-- **Automation Workflow** (preliminary concept):
+- **Automation Workflow**:
   - Control execution of benchmarks from host machine
-  - Orchestrate muBench deployments on server (via SSH/Kubernetes API)
-  - Run Locust load generator remotely against exposed gateway
-  - Collect performance results (throughput, latency) and resource usage (CPU, memory)
-  - Manage 18 system configurations × 30 replicates = 540 experiment runs
-- **Integration** (preliminary approach): 
-  - Orchestrates muBench deployments (K8sDeployer)
-  - Coordinates Locust workload generation
-  - Collects Prometheus metrics
+  - Orchestrate muBench deployments on server (via SSH/Kubernetes API) - pending
+  - Run Locust load generator remotely against exposed gateway ✅
+  - Collect performance results (throughput, latency) and resource usage (CPU, memory) - partial
+  - Manage 18 system configurations × 30 replicates = 540 experiment runs ✅
+- **Integration**:
+  - ✅ Coordinates Locust workload generation
+  - 🔄 Orchestrates muBench deployments (K8sDeployer) - pending
+  - 🔄 Collects Prometheus metrics - pending
+- **References**:
+  - Implementation: `specs/active/experiment-runner-locust-integration/feature-brief.md`
+  - Config file: `experiment-runner/examples/mubench-benchmarking/RunnerConfig.py`
+  - Status: `specs/active/experiment-runner-locust-integration/CURRENT_STATUS.md`
   - Manages experiment execution workflow
 - **References**: 
   - Repository: https://github.com/S2-group/experiment-runner
