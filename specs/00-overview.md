@@ -86,6 +86,36 @@ This project uses **Spec-Driven Development (SDD)** to structure research tasks 
     - Store in CSV format (primary)
     - **BONUS**: Open Telemetry logs format (additional format)
 
+**Experiment Design (Phase 3) - Preliminary Ideas**
+> **Note**: These are preliminary ideas and concepts that need further research and validation. The final experiment design will be determined through research and testing.
+
+- **Independent Variables** (preliminary):
+  - **Topology** (6 levels): Sequential Fan-out, Parallel Fan-out, Centralized Star, Hierarchical Tree, Probabilistic Tree, Complex Mesh
+  - **System Size** (3 levels): 5, 10, 15 services
+  - **Replicates**: 30 runs per configuration
+- **Controlled Variables** (preliminary):
+  - Workload: fixed user load
+  - Environment: same server hardware, Minikube setup, container image, gateway configuration
+  - Resource limits: same CPU and memory limits, 1 replica per service
+  - Measurement duration: 2 min warm-up + 8 min steady load per run
+- **Dependent Variables** (preliminary):
+  - **Resource Metrics**: CPU and memory usage per service and for full cluster
+  - **Performance Metrics** (from Locust): throughput, latency, failures
+  - **Energy Metrics** (if available): CPU power consumption, per-service energy data
+    - Requires Prometheus and node-level exporters (cAdvisor, node-exporter, RAPL)
+- **Automation Workflow** (preliminary concept):
+  - Generate 18 unique system configurations (6 topologies × 3 sizes)
+  - For each configuration:
+    1. Start new Kubernetes namespace for (topology, size, replicate)
+    2. Deploy corresponding workmodel via K8sDeployer
+    3. Wait until all pods are running
+    4. Run Locust workload from host machine (2 min warm-up + 8 min measurement)
+       - Execute: `locust -f locustfile.py --headless -u <users> -r <spawn_rate> -t 10m --host http://localhost:9090`
+       - Verify load traffic visible in Prometheus metrics
+       - Adjust `u` (users) and `r` (spawn rate) for desired load intensity
+    5. Collect performance results (throughput, latency) and resource usage (CPU, memory)
+    6. Delete namespace and proceed to next configuration
+
 **Phase 4: Usage Showcase**
 - **Purpose**: Demonstrate how the dataset can be used in practice
 - **Deliverables**:
@@ -183,31 +213,56 @@ This project uses **Spec-Driven Development (SDD)** to structure research tasks 
 
 ### Workload Generation and Experiment Orchestration
 
-**Locust Workload Generator**
-- **Location**: Host machine (accessed via SSH tunnel)
+**Locust Workload Generator** (Preliminary Approach)
+> **Note**: This is a preliminary approach that needs research and validation. The final implementation will be determined through testing and evaluation.
+
+- **Location**: Host machine (accessed via SSH tunnel) - *preliminary decision*
 - **Purpose**: Generate HTTP workload traffic to muBench applications
 - **Documentation**: [https://docs.locust.io/](https://docs.locust.io/)
 - **Official Website**: [https://locust.io/](https://locust.io/)
 - **Access**: Via SSH tunnel to gateway (port 9090)
 - **Usage**: Load testing and performance evaluation
+- **Execution** (preliminary approach):
+  - **Headless Mode**: Run without web UI for automated benchmarking
+  - **Command Format** (example): `locust -f locustfile.py --headless -u <users> -r <spawn_rate> -t <duration> --host http://localhost:9090`
+  - **Parameters** (to be validated):
+    - `-u` (users): Number of simulated users (e.g., 50)
+    - `-r` (spawn rate): Users spawned per second (e.g., 5)
+    - `-t` (duration): Test duration (e.g., 10m for 10 minutes)
+    - `--host`: Gateway URL via SSH tunnel (`http://localhost:9090`)
+  - **Load Intensity**: Adjust `u` and `r` parameters for desired load intensity - *needs research*
+  - **Verification**: Verify load traffic visible in Prometheus metrics - *needs validation*
+- **Integration** (preliminary concept): 
+  - Controlled by Experiment Runner for automated benchmarking
+  - Runs headless mode for fixed duration (2 min warm-up + 8 min measurement)
+  - Collects throughput, latency, and failure metrics
 - **References**: 
   - Gateway tunnel: `scripts/gateway-tunnel.sh` (server) + `scripts/gateway-tunnel-local.sh` (host)
   - Gateway URL: `http://localhost:9090` (via tunnel)
 
 **Experiment Runner** - [GitHub Repository](https://github.com/S2-group/experiment-runner)
+> **Note**: Deployment location and integration approach are preliminary ideas that need research and validation.
+
 - **Purpose**: Automatic orchestration of measurement-based experiments
 - **Documentation**: [https://github.com/S2-group/experiment-runner](https://github.com/S2-group/experiment-runner)
+- **Deployment Location**: **Host machine** (preliminary decision - centralized management, easier monitoring)
 - **Features**:
   - Run Table Model for defining experiment measurements
   - Factors and Treatment levels support
   - Restart capability for incomplete experiments
   - Persistent storage of raw and aggregated data
   - Progress tracking
-- **Deployment Location**: **To be determined** (server or host machine)
-  - Decision pending based on research requirements
-  - May run on server for direct Kubernetes access
-  - May run on host machine for centralized experiment management
-- **Integration**: Will orchestrate muBench deployments, workload generation, and metric collection
+- **Automation Workflow** (preliminary concept):
+  - Control execution of benchmarks from host machine
+  - Orchestrate muBench deployments on server (via SSH/Kubernetes API)
+  - Run Locust load generator remotely against exposed gateway
+  - Collect performance results (throughput, latency) and resource usage (CPU, memory)
+  - Manage 18 system configurations × 30 replicates = 540 experiment runs
+- **Integration** (preliminary approach): 
+  - Orchestrates muBench deployments (K8sDeployer)
+  - Coordinates Locust workload generation
+  - Collects Prometheus metrics
+  - Manages experiment execution workflow
 - **References**: 
   - Repository: https://github.com/S2-group/experiment-runner
   - Python-based framework for experiment automation
