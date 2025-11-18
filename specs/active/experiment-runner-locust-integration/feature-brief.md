@@ -3,6 +3,13 @@
 ## 🎯 Context (2min)
 **Problem**: Need automated orchestration for Phase 3 benchmarking experiments. Manual execution of 18 system configurations (6 topologies × 3 sizes) with 30 replicates each (540 total runs) is impractical. Need Experiment Runner to automate: muBench deployments, Locust workload execution, Prometheus metric collection, and experiment workflow management.
 
+**Current Status**: 
+- ✅ **POC Complete**: Experiment Runner + Locust integration tested and verified with standalone mock gateway
+- ✅ **Basic Workflow**: SSH tunnel, Locust execution, metric parsing all working
+- ✅ **Test Results**: 18 runs completed successfully with standalone gateway
+- 🔄 **Next Phase**: Full deployment integration with actual muBench applications deployed to minikube
+- ⚠️ **Prerequisite**: Generate all 18 workmodel files (6 topologies × 3 sizes: 5, 10, 20 services) manually before deployment integration
+
 **Users**: Researcher running Phase 3 benchmarking experiments on host machine, needing automated orchestration of muBench deployments, Locust load generation, and metric collection for comprehensive dataset generation.
 
 **Success**: Experiment Runner successfully orchestrates complete benchmarking workflow: deploys muBench applications via K8sDeployer, executes Locust workloads in headless mode, collects Prometheus metrics, manages 540 experiment runs (18 configs × 30 replicates), handles errors and restarts, produces aggregated results ready for Phase 4 analysis.
@@ -40,6 +47,7 @@
 - **Experiment Runner Config Creation** → Create RunnerConfig.py with RunTableModel for 18 configs (6 topologies × 3 sizes) × 30 replicates
 - **Path Configuration** → Set up relative paths from Experiment Runner to muBench components (K8sDeployer, Locust, scripts)
 - **SSH Tunnel Integration** → Automate SSH tunnel setup in before_experiment, verify connectivity before runs
+- **Workmodel Generation** → Generate all 18 workmodel files (6 topologies × 3 sizes: 5, 10, 20 services) manually before deployment integration
 - **muBench Deployment Orchestration** → Integrate K8sDeployer execution in start_run, wait for pods ready, handle deployment errors
 - **Locust Execution Integration** → Execute Locust headless mode in interact hook, 2 min warm-up + 8 min measurement, collect CSV metrics
 - **Prometheus Metric Collection** → Query/export Prometheus metrics in stop_measurement, collect CPU/memory/performance data
@@ -73,17 +81,34 @@
 - Configuration data: Workmodel paths per topology/size, deployment configs
 
 ## 📋 Next Actions (2min)
-- [ ] Research folder structure options (sibling vs inside muBench) - analyze pros/cons
-- [ ] Review Experiment Runner examples (hello-world, linux-ps-profiling) for integration patterns
-- [ ] Create initial RunnerConfig.py structure with RunTableModel (6 topologies × 3 sizes × 30 replicates)
-- [ ] Set up path configuration (relative paths from Experiment Runner to muBench)
-- [ ] Test basic Experiment Runner execution (hello-world example)
-- [ ] Integrate SSH tunnel setup in before_experiment hook
-- [ ] Integrate Locust execution in interact hook (test with standalone gateway)
-- [ ] Test end-to-end workflow with mock gateway (no minikube required)
-- [ ] Add muBench deployment integration (when minikube available)
-- [ ] Add Prometheus metric collection
-- [ ] Test with single run, then scale to multiple runs
+
+**Phase 1: POC Complete ✅**
+- [x] Research folder structure options (sibling vs inside muBench) - analyze pros/cons
+- [x] Review Experiment Runner examples (hello-world, linux-ps-profiling) for integration patterns
+- [x] Create initial RunnerConfig.py structure with RunTableModel (6 topologies × 3 sizes × 30 replicates)
+- [x] Set up path configuration (relative paths from Experiment Runner to muBench)
+- [x] Test basic Experiment Runner execution (hello-world example)
+- [x] Integrate SSH tunnel setup in before_experiment hook
+- [x] Integrate Locust execution in interact hook (test with standalone gateway)
+- [x] Test end-to-end workflow with mock gateway (no minikube required)
+
+**Phase 2: Full Deployment Integration (Current Phase)**
+- [x] **PREREQUISITE**: Generate all 18 workmodel files manually (6 topologies × 3 sizes: 5, 10, 20 services) ✅ ALL GENERATED
+- [x] **Implementation Guide Created**: See [DEPLOYMENT_IMPLEMENTATION.md](DEPLOYMENT_IMPLEMENTATION.md) for complete code snippets
+- [ ] Document workmodel naming convention and verify file paths
+- [ ] Review existing workmodel files to understand structure and patterns
+- [ ] Test manual deployment: `python3 Deployers/K8sDeployer/RunK8sDeployer.py -c Configs/K8sParameters.json`
+- [ ] **TODO**: Add implementation code to RunnerConfig.py (see DEPLOYMENT_IMPLEMENTATION.md)
+  - [ ] Add workmodel mapping function
+  - [ ] Add namespace management functions
+  - [ ] Add K8sParameters generation function
+  - [ ] Update start_run hook with deployment logic
+  - [ ] Add Prometheus query functions
+  - [ ] Update stop_measurement hook
+  - [ ] Update populate_run_data hook
+  - [ ] Update stop_run hook with cleanup
+- [ ] Test single run end-to-end with actual muBench deployment
+- [ ] Test with multiple runs to verify namespace management and cleanup
 
 **Start Coding In**: ~30min (after brief completion)
 
@@ -111,6 +136,8 @@
 - [x] **✅ TESTED** - Test Locust integration with standalone gateway ✅
 - [x] **✅ TESTED** - Test end-to-end workflow with mock gateway ✅
 - [x] **✅ TESTED** - Verify Locust metric parsing works correctly ✅
+- [x] **PREREQUISITE**: Generate all 18 workmodel files (6 topologies × 3 sizes: 5, 10, 20 services) manually ✅ ALL GENERATED
+- [ ] Document workmodel naming convention and update mapping in RunnerConfig
 - [ ] Add muBench deployment integration (when minikube available) - TODO in start_run hook
 - [ ] Add Prometheus metric collection - TODO in stop_measurement hook
 - [ ] Test with single run, then scale to multiple runs
@@ -118,10 +145,16 @@
 **✅ TESTING COMPLETE: Basic integration tested and verified. See [TEST_RESULTS.md](TEST_RESULTS.md) for detailed test results.**
 
 ### Blockers
-- None currently. Testing requires:
+- **Workmodel Generation**: ✅ ALL 18 workmodel files generated and tested
+  - Required: 6 topologies × 3 sizes (5, 10, 20 services) = 18 files
+  - Status: All files exist, all manually generated files tested ✅
+  - Manually generated: 10 files (Nov 16-17, 2025) - all tested ✅
+  - All workmodels verified to deploy correctly
+- Testing requires:
   1. Experiment Runner dependencies installed (`pip install -r requirements.txt` in experiment-runner/)
   2. Standalone gateway running (for testing without minikube): `./scripts/gateway-tunnel-standalone-python.sh`
   3. SSH tunnel capability (for gateway access)
+  4. All 18 workmodel files generated (for deployment integration)
 
 ### Current Implementation Status
 
@@ -137,7 +170,9 @@
 - Documentation: README.md with usage instructions
 
 **🔄 IN PROGRESS / TODO:**
-- muBench deployment integration (start_run hook) - requires minikube
+- ✅ **PREREQUISITE**: Generate all 18 workmodel files (6 topologies × 3 sizes: 5, 10, 20 services) - ✅ ALL GENERATED
+- ✅ **Testing**: All 10 manually generated workmodels tested and verified ✅
+- muBench deployment integration (start_run hook) - requires minikube + all workmodel files
 - Prometheus metric collection (stop_measurement hook) - requires Prometheus
 - Testing: Basic execution and end-to-end workflow
 
@@ -226,7 +261,7 @@ From `experiment-runner/examples/mubench-benchmarking/RunnerConfig.py`:
 - Factor 2: System Size (3 levels)
   - 5 services
   - 10 services
-  - 15 services
+  - 20 services
 - Repetitions: 30 per configuration
 - Total runs: 6 × 3 × 30 = 540 runs
 
@@ -339,10 +374,69 @@ From `experiment-runner/examples/mubench-benchmarking/RunnerConfig.py`:
 
 ### Configuration Management
 
+**Workmodel Generation Requirement:**
+- **Prerequisite**: All 18 workmodel files must exist before deployment integration can proceed
+- **Required**: 6 topologies × 3 sizes (5, 10, 20 services) = 18 workmodel files total
+- **Generation**: Workmodels will be generated manually (no automated generation)
+- **Location**: `Examples/` directory in muBench
+
 **Workmodel Mapping:**
 - Topology × Size → Workmodel file path
-- Example: Sequential Fan-out × 10 services → `Examples/workmodel-serial-10services.json`
+- Naming conventions:
+  - Sequential Fan-out: `workmodel-serial-{size}services.json`
+  - Parallel Fan-out: `workmodel-parallel-{size}services.json`
+  - Centralized Star: `workmodelA.json` (20 services), `workmodelA-{size}services.json` (5, 10)
+  - Hierarchical Tree: `workmodelC.json` (20 services), `workmodelC-{size}services.json` (5, 10)
+  - Probabilistic Tree: `workmodelC-multi.json` (20 services), `workmodelC-multi-{size}services.json` (5, 10)
+  - Complex Mesh: `workmodelD.json` (20 services), `workmodelD-{size}services.json` (5, 10)
+- Examples:
+  - Sequential Fan-out × 10 services → `Examples/workmodel-serial-10services.json`
+  - Centralized Star × 20 services → `Examples/workmodelA.json`
+  - Hierarchical Tree × 5 services → `Examples/workmodelC-5services.json`
 - Store mapping in RunnerConfig or separate config file
+
+**Workmodel Status:**
+- **Sequential Fan-out (Serial)**: 
+  - ✅ 5 services: `workmodel-serial-5services.json` (exists)
+  - ✅ 10 services: `workmodel-serial-10services.json` (exists)
+  - ✅ 20 services: `workmodel-serial-20services.json` (manually generated, tested ✅)
+- **Parallel Fan-out (Parallel)**:
+  - ✅ 5 services: `workmodel-parallel-5services.json` (exists)
+  - ✅ 10 services: `workmodel-parallel-10services.json` (exists)
+  - ✅ 20 services: `workmodel-parallel-20services.json` (manually generated, tested ✅)
+- **Centralized Star**:
+  - ✅ 5 services: `workmodelA-5services.json` (manually generated, tested ✅)
+  - ✅ 10 services: `workmodelA-10services.json` (manually generated, tested ✅)
+  - ✅ 20 services: `workmodelA.json` (exists)
+- **Hierarchical Tree**:
+  - ✅ 5 services: `workmodelC-5services.json` (manually generated, tested ✅)
+  - ✅ 10 services: `workmodelC-10services.json` (manually generated, tested ✅)
+  - ✅ 20 services: `workmodelC.json` (exists)
+- **Probabilistic Tree**:
+  - ✅ 5 services: `workmodelC-multi-5services.json` (manually generated, tested ✅)
+  - ✅ 10 services: `workmodelC-multi-10services.json` (manually generated, tested ✅)
+  - ✅ 20 services: `workmodelC-multi.json` (exists)
+- **Complex Mesh**:
+  - ✅ 5 services: `workmodelD-5services.json` (manually generated, tested ✅)
+  - ✅ 10 services: `workmodelD-10services.json` (manually generated, tested ✅)
+  - ✅ 20 services: `workmodelD.json` (exists)
+
+**Manually Generated Workmodels (Nov 16-17, 2025):**
+The following 10 workmodel files were manually generated and tested:
+1. `workmodel-serial-20services.json`
+2. `workmodel-parallel-20services.json`
+3. `workmodelA-5services.json`
+4. `workmodelA-10services.json`
+5. `workmodelC-5services.json`
+6. `workmodelC-10services.json`
+7. `workmodelC-multi-5services.json`
+8. `workmodelC-multi-10services.json`
+9. `workmodelD-5services.json`
+10. `workmodelD-10services.json`
+
+All manually generated workmodels have been tested and verified to deploy correctly.
+
+**Note**: Exact naming convention may vary based on existing patterns. Verify naming after generation and update mapping accordingly.
 
 **K8sParameters Template:**
 - Base template: `Configs/K8sParameters.json`
