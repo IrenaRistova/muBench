@@ -49,8 +49,10 @@ spec:
     - port: 80
       protocol: TCP
       targetPort: 80
-      nodePort: 31113
       name: http-nginx
+      # nodePort removed - Kubernetes will assign automatically
+      # For LoadBalancer: nodePort is optional and auto-assigned
+      # For NodePort: nodePort is auto-assigned if not specified (avoids conflicts)
   selector:
     app: gw-nginx
 
